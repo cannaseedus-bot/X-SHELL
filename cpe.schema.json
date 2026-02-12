@@ -1,0 +1,58 @@
+{
+  "$id": "kuhul://xcfe/cpe/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "XCFE Collapse Proposal Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "@proposal",
+    "@version",
+    "vector_state_hash",
+    "lane_configuration_hash",
+    "arbitration_policy_hash",
+    "entropy_expected",
+    "proposed_signal_hash",
+    "proof_expectations"
+  ],
+  "properties": {
+    "@proposal": {
+      "const": "xcfe-collapse"
+    },
+    "@version": {
+      "const": "v1"
+    },
+    "vector_state_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "lane_configuration_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "arbitration_policy_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "entropy_expected": {
+      "type": "number",
+      "const": 0.21
+    },
+    "proposed_signal_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "proof_expectations": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "collapse_only",
+          "one_outcome",
+          "field_perception",
+          "compression_law"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  }
+}

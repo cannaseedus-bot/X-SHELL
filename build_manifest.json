@@ -1,0 +1,21 @@
+{
+  "@build": "k-shell",
+  "@version": "v2",
+  "compiler": {
+    "name": "x86_64-w64-mingw32-gcc",
+    "version": "12.2.0",
+    "target_triplet": "x86_64-w64-mingw32",
+    "compiler_sha256": "TO_BE_FILLED"
+  },
+  "flags": [
+    "-O2",
+    "-static",
+    "-std=c11",
+    "-fno-ident",
+    "-fno-asynchronous-unwind-tables",
+    "-fno-stack-protector",
+    "-Wl,--no-insert-timestamp"
+  ],
+  "source_tree_hash": "TO_BE_FILLED",
+  "expected_sha256": "TO_BE_FILLED"
+}

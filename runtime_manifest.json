@@ -1,0 +1,22 @@
+{
+  "@runtime": "x-shell-xcfe-control-plane",
+  "@version": "v1",
+  "capabilities": {
+    "simulation_mode": true,
+    "proposal_mode": true,
+    "replay_mode": true,
+    "audit_mode": true,
+    "collapse_execution": false,
+    "artifact_mutation": false
+  },
+  "boundary_contract": {
+    "outbound": "Collapse Proposal Envelope (CPE)",
+    "inbound": "artifact.json",
+    "enforcement_authority": "pi/sw.khl"
+  },
+  "determinism": {
+    "randomness": "forbidden",
+    "time_inputs": "forbidden",
+    "network_entropy": "forbidden"
+  }
+}
