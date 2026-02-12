@@ -1,0 +1,96 @@
+{
+  "$id": "kuhul://artifact/collapse/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "sw.khl Collapse Artifact",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "@artifact",
+    "@version",
+    "@origin",
+    "@deterministic",
+    "input",
+    "collapse",
+    "proof",
+    "projection_ready"
+  ],
+  "properties": {
+    "@artifact": { "const": "collapse" },
+    "@version": { "const": "v1" },
+    "@origin": { "const": "sw.khl" },
+    "@deterministic": { "const": true },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input_hash", "input_size", "input_encoding", "timestamp"],
+      "properties": {
+        "input_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "input_size": { "type": "integer", "minimum": 0 },
+        "input_encoding": { "const": "utf-8" },
+        "timestamp": { "type": "null" }
+      }
+    },
+    "collapse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "collapse_result_hash",
+        "collapse_trace_hash",
+        "entropy",
+        "invariants",
+        "compression_ratio",
+        "execution_pipeline"
+      ],
+      "properties": {
+        "collapse_result_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "collapse_trace_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "entropy": { "type": "number", "const": 0.21 },
+        "invariants": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "collapse_only",
+              "field_perception",
+              "compression_law",
+              "unreachable_states"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "compression_ratio": { "type": "number", "minimum": 0 },
+        "execution_pipeline": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "perceive_as_field" },
+            { "const": "extract_executable_curvature" },
+            { "const": "collapse_to_law" },
+            { "const": "produce_output" }
+          ],
+          "items": false,
+          "minItems": 4,
+          "maxItems": 4
+        }
+      }
+    },
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "one_outcome",
+        "no_branching_detected",
+        "no_parallelism_detected",
+        "no_mutation_detected",
+        "replay_identity_verified"
+      ],
+      "properties": {
+        "one_outcome": { "const": true },
+        "no_branching_detected": { "const": true },
+        "no_parallelism_detected": { "const": true },
+        "no_mutation_detected": { "const": true },
+        "replay_identity_verified": { "const": true }
+      }
+    },
+    "projection_ready": { "const": true }
+  }
+}

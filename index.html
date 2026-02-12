@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X-Shell v1</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<div class="layout">
+  <aside class="panel left">
+    <h2>Vector Registry</h2>
+    <ul id="vector-list"></ul>
+    <button id="add-vector">Add Vector</button>
+    <button id="snapshot-state">Snapshot</button>
+  </aside>
+
+  <main class="panel center">
+    <h2>Flow Graph</h2>
+    <svg id="graph" width="800" height="400"></svg>
+    <h3>Replay</h3>
+    <ul id="replay-list"></ul>
+  </main>
+
+  <aside class="panel right">
+    <h2>Proposal Inspector</h2>
+    <pre id="proposal-output"></pre>
+    <button id="simulate-arbitration">Simulation Mode</button>
+    <button id="audit-sandbox">Audit Mode</button>
+    <button id="emit-proposal">Proposal Mode (Emit CPE)</button>
+    <pre id="audit-output"></pre>
+  </aside>
+</div>
+
+<script type="module" src="js/app.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
+</body>
+</html>
